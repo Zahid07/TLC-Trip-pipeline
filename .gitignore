@@ -1,0 +1,6 @@
+# add venv in gitignore
+.venv/
+api-data/fhv
+api-data/green
+api-data/yellow
+api-data/fhvhv
