@@ -1,6 +1,8 @@
 # add venv in gitignore
 .venv/
-api-data/fhv
-api-data/green
-api-data/yellow
-api-data/fhvhv
+api_data/fhv
+api_data/green
+api_data/yellow
+api_data/fhvhv
+Airflow/logs/
+*.pyc
