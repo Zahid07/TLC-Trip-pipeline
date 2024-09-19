@@ -58,5 +58,5 @@ def main():
     
     # print(MAIN_DIR)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
