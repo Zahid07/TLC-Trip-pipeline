@@ -76,6 +76,27 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+
+  clickhouse-server:
+    image: yandex/clickhouse-server:latest
+    container_name: clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ${AIRFLOW_PROJ_DIR:-.}/api_data:/var/lib/clickhouse/user_files
+    environment:
+      CLICKHOUSE_DB: default_db
+      CLICKHOUSE_USER: default_user
+      CLICKHOUSE_PASSWORD: default_password
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:8123/ping | grep -q Ok"]
+      interval: 10s
+      retries: 5
+    restart: always
+
   postgres:
     image: postgres:13
     environment:
@@ -280,3 +301,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  clickhouse_data:
